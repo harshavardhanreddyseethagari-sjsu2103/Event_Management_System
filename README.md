@@ -116,13 +116,5 @@ Every table supports all four SQL operations through the web UI.
 
 ---
 
-## Team
-
-| Name | Student ID |
-|------|-----------|
-| [Your Name] | [Your ID] |
-| [Partner Name] | [Partner ID] |
-
----
 
 *CS-157A · Spring 2026 · San José State University*
