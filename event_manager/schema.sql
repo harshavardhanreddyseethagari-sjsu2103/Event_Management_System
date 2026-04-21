@@ -1,9 +1,7 @@
-CREATE TABLE Organizers (
-    organizer_id INT PRIMARY KEY,
-    name varchar(30),
-    email varchar(30),
-    phone INT,
-    organization varchar(15)
+CREATE TABLE IF NOT EXISTS Organizers (
+    organizer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name         TEXT NOT NULL,
+    email        TEXT NOT NULL,
+    phone        TEXT NOT NULL,
+    organization TEXT NOT NULL
 );
-
-
