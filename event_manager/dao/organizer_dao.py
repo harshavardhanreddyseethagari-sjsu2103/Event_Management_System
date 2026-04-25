@@ -1,12 +1,10 @@
 import database as DB
-# db = DB.get_db()
 
 def get_all_organizers():
     db = DB.get_db()
     rows = db.execute("SELECT * FROM Organizers ORDER BY name").fetchall()
     db.close()
     return rows
-
 
 def get_organizer_by_id(organizer_id):
     db = DB.get_db()
@@ -22,7 +20,6 @@ def add_organizer(name, email, phone, organization):
     db.commit()
     db.close()
 
-
 def update_organizer(organizer_id, name, email, phone, organization):
     db = DB.get_db()
     db.execute("""
@@ -32,7 +29,6 @@ def update_organizer(organizer_id, name, email, phone, organization):
                 """, (name, email, phone, organization, organizer_id))
     db.commit()
     db.close()
-
 
 def delete_organizer(organizer_id):
     db = DB.get_db()
