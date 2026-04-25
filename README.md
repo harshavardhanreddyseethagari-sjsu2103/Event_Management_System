@@ -105,11 +105,11 @@ Every table supports all four SQL operations through the web UI.
 - [x] schema.sql + seed.sql
 - [x] database.py
 - [x] organizer_dao.py
-- [ ] venue_dao.py
-- [ ] event_dao.py
-- [ ] attendee_dao.py
-- [ ] ticket_dao.py
-- [ ] Flask routes (app.py)
+- [x] venue_dao.py
+- [x] event_dao.py
+- [x] attendee_dao.py
+- [x] ticket_dao.py
+- [x] Flask routes (app.py)
 - [ ] HTML templates
 - [ ] Final report
 - [ ] Presentation
