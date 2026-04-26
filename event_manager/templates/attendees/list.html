@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Attendees{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>👥 Attendees</h2>
+    <a href="/attendees/add" class="btn btn-success">+ Add New Attendee</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-striped table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in attendees %}
+                <tr>
+                    <td>{{ a['attendee_id'] }}</td>
+                    <td>{{ a['name'] }}</td>
+                    <td>{{ a['email'] }}</td>
+                    <td>{{ a['phone'] }}</td>
+                    <td>
+                        <a href="/attendees/edit/{{ a['attendee_id'] }}"
+                           class="btn btn-sm btn-warning">Edit</a>
+                        <form action="/attendees/delete/{{ a['attendee_id'] }}"
+                              method="post" style="display:inline">
+                            <button type="submit" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Delete this attendee?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

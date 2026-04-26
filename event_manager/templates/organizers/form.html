@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Edit Organizer' if organizer else 'Add Organizer' }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">{{ '✏️ Edit Organizer' if organizer else '➕ Add New Organizer' }}</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ '/organizers/edit/' + organizer['organizer_id']|string if organizer else '/organizers/add' }}"
+                      method="post">
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Full Name</label>
+                        <input type="text" name="name" class="form-control"
+                               value="{{ organizer['name'] if organizer else '' }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Organization</label>
+                        <input type="text" name="organization" class="form-control"
+                               value="{{ organizer['organization'] if organizer else '' }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input type="email" name="email" class="form-control"
+                               value="{{ organizer['email'] if organizer else '' }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Phone</label>
+                        <input type="text" name="phone" class="form-control"
+                               value="{{ organizer['phone'] if organizer else '' }}" required>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="/organizers" class="btn btn-secondary">Cancel</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

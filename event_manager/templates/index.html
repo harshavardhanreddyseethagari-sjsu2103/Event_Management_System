@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Home — Event Manager{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="fw-bold">🎟️ Event Management System</h1>
+    <p class="text-muted fs-5">CS-157A — Database Management Systems · SJSU</p>
+</div>
+
+<div class="row g-4 justify-content-center">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 text-center p-3">
+            <div class="fs-1 mt-2">📅</div>
+            <div class="card-body">
+                <h5 class="card-title">Events</h5>
+                <p class="card-text text-muted">Browse, add, edit, and delete events</p>
+                <a href="/events" class="btn btn-primary">Go to Events</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 text-center p-3">
+            <div class="fs-1 mt-2">👥</div>
+            <div class="card-body">
+                <h5 class="card-title">Attendees</h5>
+                <p class="card-text text-muted">Manage registered attendees</p>
+                <a href="/attendees" class="btn btn-primary">Go to Attendees</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 text-center p-3">
+            <div class="fs-1 mt-2">🎫</div>
+            <div class="card-body">
+                <h5 class="card-title">Tickets</h5>
+                <p class="card-text text-muted">View and manage ticket purchases</p>
+                <a href="/tickets" class="btn btn-primary">Go to Tickets</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 text-center p-3">
+            <div class="fs-1 mt-2">🏢</div>
+            <div class="card-body">
+                <h5 class="card-title">Organizers</h5>
+                <p class="card-text text-muted">Manage event organizers</p>
+                <a href="/organizers" class="btn btn-primary">Go to Organizers</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 text-center p-3">
+            <div class="fs-1 mt-2">📍</div>
+            <div class="card-body">
+                <h5 class="card-title">Venues</h5>
+                <p class="card-text text-muted">Manage event venues</p>
+                <a href="/venues" class="btn btn-primary">Go to Venues</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

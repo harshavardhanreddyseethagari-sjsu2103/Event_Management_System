@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Edit Ticket' if ticket else 'Add Ticket' }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">{{ '✏️ Edit Ticket' if ticket else '➕ Add New Ticket' }}</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ '/tickets/edit/' + ticket['ticket_id']|string if ticket else '/tickets/add' }}"
+                      method="post">
+
+                    <!-- Event dropdown -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Event</label>
+                        <select name="event_id" class="form-select" required>
+                            <option value="">-- Select Event --</option>
+                            {% for e in events %}
+                            <option value="{{ e['event_id'] }}"
+                                {{ 'selected' if ticket and ticket['event_id'] == e['event_id'] }}>
+                                {{ e['title'] }} ({{ e['event_date'] }})
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Attendee dropdown -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Attendee</label>
+                        <select name="attendee_id" class="form-select" required>
+                            <option value="">-- Select Attendee --</option>
+                            {% for a in attendees %}
+                            <option value="{{ a['attendee_id'] }}"
+                                {{ 'selected' if ticket and ticket['attendee_id'] == a['attendee_id'] }}>
+                                {{ a['name'] }} — {{ a['email'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Ticket Type</label>
+                        <select name="ticket_type" class="form-select" required>
+                            {% for t_type in ['General', 'VIP', 'Standard', 'Premium', 'Free', 'Workshop'] %}
+                            <option value="{{ t_type }}"
+                                {{ 'selected' if ticket and ticket['ticket_type'] == t_type }}>
+                                {{ t_type }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Price ($)</label>
+                        <input type="number" name="price" class="form-control"
+                               step="0.01" min="0"
+                               value="{{ ticket['price'] if ticket else '0.00' }}" required>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="/tickets" class="btn btn-secondary">Cancel</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

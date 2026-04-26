@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Tickets{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>🎫 Tickets</h2>
+    <a href="/tickets/add" class="btn btn-success">+ Add New Ticket</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-striped table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Event</th>
+                    <th>Attendee</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in tickets %}
+                <tr>
+                    <td>{{ t['ticket_id'] }}</td>
+                    <td>{{ t['event_title'] }}</td>
+                    <td>{{ t['attendee_name'] }}</td>
+                    <td>{{ t['ticket_type'] }}</td>
+                    <td>${{ "%.2f"|format(t['price']) }}</td>
+                    <td>
+                        <a href="/tickets/edit/{{ t['ticket_id'] }}"
+                           class="btn btn-sm btn-warning">Edit</a>
+                        <form action="/tickets/delete/{{ t['ticket_id'] }}"
+                              method="post" style="display:inline">
+                            <button type="submit" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Cancel this ticket?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
