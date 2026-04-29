@@ -45,6 +45,8 @@ def update_event(event_id, title, description, event_date, organizer_id, venue_i
 
 def delete_event(event_id):
     db = DB.get_db()
-    db.execute("DELETE FROM Events WHERE event_id = ?", (event_id,))
-    db.commit()
-    db.close()
+    try:
+        db.execute("DELETE FROM Events WHERE event_id = ?", (event_id,))
+        db.commit()
+    finally:
+        db.close()  

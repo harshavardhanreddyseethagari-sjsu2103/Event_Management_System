@@ -32,6 +32,8 @@ def update_attendee(attendee_id, name, email, phone):
 
 def delete_attendee(attendee_id):
     db = DB.get_db()
-    db.execute("DELETE FROM Attendees WHERE attendee_id = ?", (attendee_id,))
-    db.commit()
-    db.close()
+    try:
+        db.execute("DELETE FROM Attendees WHERE attendee_id = ?", (attendee_id,))
+        db.commit()
+    finally:
+        db.close()  

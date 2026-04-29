@@ -5,9 +5,9 @@ from dao import organizer_dao, venue_dao, event_dao, attendee_dao, ticket_dao
 app = Flask(__name__)
 
 # create and seed the db on first run if it doesnt exist yet
-@app.before_request
-def setup():
-    DB.init_db()
+# @app.before_request
+# def setup():
+#     DB.init_db()
 
 # home
 @app.route('/')
@@ -214,4 +214,5 @@ def delete_ticket(ticket_id):
 
 
 if __name__ == '__main__':
+    DB.init_db()
     app.run(debug=True)

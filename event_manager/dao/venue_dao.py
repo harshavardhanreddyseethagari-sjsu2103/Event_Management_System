@@ -32,6 +32,8 @@ def update_venue(venue_id, name, address, city, state, capacity):
 
 def delete_venue(venue_id):
     db = DB.get_db()
-    db.execute("DELETE FROM Venues WHERE venue_id = ?", (venue_id,))
-    db.commit()
-    db.close()
+    try:
+        db.execute("DELETE FROM Venues WHERE venue_id = ?", (venue_id,))
+        db.commit()
+    finally:
+        db.close()

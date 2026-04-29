@@ -32,8 +32,10 @@ def update_organizer(organizer_id, name, email, phone, organization):
 
 def delete_organizer(organizer_id):
     db = DB.get_db()
-    db.execute("DELETE FROM Organizers WHERE organizer_id = ?", (organizer_id,))
-    db.commit()
-    db.close()
+    try:
+        db.execute("DELETE FROM Organizers WHERE organizer_id = ?", (organizer_id,))
+        db.commit()
+    finally:
+        db.close()  # always runs, even if an error happens
 
 

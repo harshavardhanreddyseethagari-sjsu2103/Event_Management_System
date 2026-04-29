@@ -43,8 +43,11 @@ def update_ticket(ticket_id, event_id, attendee_id, ticket_type, price):
     db.commit()
     db.close()
 
+
 def delete_ticket(ticket_id):
     db = DB.get_db()
-    db.execute("DELETE FROM Tickets WHERE ticket_id = ?", (ticket_id,))
-    db.commit()
-    db.close()
+    try:
+        db.execute("DELETE FROM Events WHERE event_id = ?", (ticket_id,))
+        db.commit()
+    finally:
+        db.close()
