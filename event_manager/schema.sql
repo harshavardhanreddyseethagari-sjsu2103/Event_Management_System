@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS Events (
     event_date   TEXT NOT NULL,
     organizer_id INTEGER NOT NULL,
     venue_id     INTEGER NOT NULL,
-    FOREIGN KEY (organizer_id) REFERENCES Organizers(organizer_id),
-    FOREIGN KEY (venue_id)     REFERENCES Venues(venue_id)
+    FOREIGN KEY (organizer_id) REFERENCES Organizers(organizer_id) ON DELETE CASCADE,
+    FOREIGN KEY (venue_id)     REFERENCES Venues(venue_id) ON DELETE CASCADE
 );
  
 CREATE TABLE IF NOT EXISTS Attendees (
@@ -41,6 +41,6 @@ CREATE TABLE IF NOT EXISTS Tickets (
     attendee_id INTEGER NOT NULL,
     ticket_type TEXT NOT NULL,
     price       REAL NOT NULL,
-    FOREIGN KEY (event_id)    REFERENCES Events(event_id),
-    FOREIGN KEY (attendee_id) REFERENCES Attendees(attendee_id)
+    FOREIGN KEY (event_id)    REFERENCES Events(event_id) ON DELETE CASCADE,
+    FOREIGN KEY (attendee_id) REFERENCES Attendees(attendee_id) ON DELETE CASCADE
 );
