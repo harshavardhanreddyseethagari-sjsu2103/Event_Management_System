@@ -212,6 +212,10 @@ def delete_ticket(ticket_id):
     ticket_dao.delete_ticket(ticket_id)
     return redirect(url_for('list_tickets'))
 
+@app.after_request
+def no_cache(response):
+    response.headers["Cache-Control"] = "no-store"
+    return response
 
 if __name__ == '__main__':
     DB.init_db()
