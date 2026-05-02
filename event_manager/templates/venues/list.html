@@ -14,9 +14,10 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Location</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
                     <th>Capacity</th>
-                    <th>Contact Phone</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -25,9 +26,10 @@
                 <tr>
                     <td>{{ v['venue_id'] }}</td>
                     <td>{{ v['name'] }}</td>
-                    <td>{{ v['location'] }}</td>
+                    <td>{{ v['address'] }}</td>
+                    <td>{{ v['city'] }}</td>
+                    <td>{{ v['state'] }}</td>
                     <td>{{ v['capacity'] }}</td>
-                    <td>{{ v['contact_phone'] }}</td>
                     <td>
                         <a href="/venues/edit/{{ v['venue_id'] }}"
                            class="btn btn-sm btn-warning">Edit</a>
