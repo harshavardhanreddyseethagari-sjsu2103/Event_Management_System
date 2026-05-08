@@ -1,50 +1,92 @@
 INSERT INTO Organizers (name, email, phone, organization) VALUES
-('Jackie Chan', 'jackie@gmail.com', '123456789', 'Kung-Fu Panda'),
-('Bruce Lee', 'bruce@gmail.com', '987654321', 'Dragon Studio'),
-('John Doe', 'john@gmail.com', '111222333', 'Doe Events');
+('Jackie Chan',     'jackie@gmail.com',    '4081112222', 'Kung-Fu Panda'),
+('Bruce Lee',       'bruce@sjsu.edu',      '4153334444', 'Dragon Studio'),
+('John Doe',        'john@gmail.com',      '5105556666', 'Doe Events'),
+('Sara Connor',     'sara@sjsu.edu',       '6507778888', 'Connor Co'),
+('Mike Johnson',    'mike@gmail.com',      '4089990000', 'MJ Events'),
+('Linda Park',      'linda@sjsu.edu',      '4151213434', 'Park Productions'),
+('Tom Hardy',       'tom@gmail.com',       '5105657878', 'Hardy Group'),
+('Emma Davis',      'emma@sjsu.edu',       '6509091212', 'Davis Inc'),
+('Chris Evans',     'chris@gmail.com',     '4082345678', 'Evans LLC'),
+('Natalie Wong',    'natalie@sjsu.edu',    '4153456789', 'Wong Events'),
+('Kevin Hart',      'kevin@gmail.com',     '5104567890', 'Hart Co'),
+('Olivia Brown',    'olivia@sjsu.edu',     '6505678901', 'Brown Group'),
+('James Wilson',    'james@gmail.com',     '4086789012', 'Wilson Events'),
+('Sophia Martinez', 'sophia@sjsu.edu',     '4157890123', 'Martinez Co'),
+('Daniel Taylor',   'daniel@gmail.com',    '5108901234', 'Taylor Inc');
 
--- venues
 INSERT INTO Venues (name, address, city, state, capacity) VALUES
-('The Grand Hall', '100 Market St', 'San Jose', 'CA', 1000),
-('Sunset Pavilion', '200 Ocean Ave', 'Santa Cruz', 'CA', 500),
-('Downtown Arena', '300 Main St', 'San Francisco', 'CA', 3000),
-('Riverside Park', '400 River Rd', 'Sacramento', 'CA', 800),
-('The Rooftop', '500 Sky Blvd', 'Oakland', 'CA', 250);
+('The Grand Hall',     '100 Market St',   'San Jose',      'CA', 1000),
+('Sunset Pavilion',    '200 Ocean Ave',   'Santa Cruz',    'CA', 500),
+('Downtown Arena',     '300 Main St',     'San Francisco', 'CA', 3000),
+('Riverside Park',     '400 River Rd',    'Sacramento',    'CA', 800),
+('The Rooftop',        '500 Sky Blvd',    'Oakland',       'CA', 250),
+('City Convention',    '600 Center Ave',  'San Jose',      'CA', 2000),
+('Bay View Hall',      '700 Harbor Rd',   'San Francisco', 'CA', 1500),
+('Silicon Auditorium', '800 Tech Blvd',   'Santa Clara',   'CA', 1200),
+('Mountain View Ctr',  '900 Hill St',     'Mountain View', 'CA', 600),
+('East Bay Pavilion',  '1000 East Ave',   'Oakland',       'CA', 400),
+('South Bay Arena',    '1100 South Blvd', 'San Jose',      'CA', 2500),
+('Golden Gate Hall',   '1200 Gold St',    'San Francisco', 'CA', 900),
+('Valley Center',      '1300 Valley Rd',  'San Jose',      'CA', 700),
+('Coastal Venue',      '1400 Coast Hwy',  'Santa Cruz',    'CA', 350),
+('Lakeview Theater',   '1500 Lake Dr',    'Sacramento',    'CA', 450);
 
--- events (organizer_id and venue_id match the rows above)
-INSERT INTO Events (title, description, event_date, organizer_id, venue_id) VALUES
-('Kung-Fu Night', 'A night of martial arts demos and performances', '2026-06-10', 1, 1),
-('Dragon Gala', 'Annual gala hosted by Dragon Studio', '2026-06-15', 2, 3),
-('Summer Mixer', 'Casual networking event by the water', '2026-06-20', 3, 2),
-('Fight Night', 'Exhibition matches and live music', '2026-07-04', 2, 4),
-('Rooftop Social', 'Evening social with food and drinks', '2026-07-12', 1, 5),
-('Doe Conference', 'Professional development conference', '2026-07-18', 3, 1);
+INSERT INTO Events (title, description, event_date, max_capacity, organizer_id, venue_id) VALUES
+('Kung-Fu Night',    'A night of martial arts demos',     '2026-06-10', 500,  1,  1),
+('Dragon Gala',      'Annual gala by Dragon Studio',      '2026-06-15', 300,  2,  3),
+('Summer Mixer',     'Casual networking by the water',    '2026-06-20', 200,  3,  2),
+('Fight Night',      'Exhibition matches and live music', '2026-07-04', 800,  2,  4),
+('Rooftop Social',   'Evening social with food',          '2026-07-12', 150,  1,  5),
+('Doe Conference',   'Professional development conf',     '2026-07-18', 400,  3,  1),
+('Tech Summit',      'Annual technology conference',      '2026-07-25', 1000, 4,  6),
+('Art Exhibition',   'Local artists showcase',            '2026-08-01', 250,  5,  7),
+('Music Festival',   'Two day outdoor music event',       '2026-08-10', 2000, 6,  8),
+('Food Fair',        'Annual food and culture fair',      '2026-08-15', 500,  7,  9),
+('Startup Weekend',  '54 hour startup competition',       '2026-08-20', 300,  8, 10),
+('Comedy Night',     'Stand up comedy showcase',          '2026-08-25', 200,  9, 11),
+('Sports Day',       'Community sports competition',      '2026-09-01', 600, 10, 12),
+('Film Festival',    'Independent film screenings',       '2026-09-10', 400, 11, 13),
+('Career Fair',      'Connect with top employers',        '2026-09-15', 800, 12, 14);
 
--- attendees
 INSERT INTO Attendees (name, email, phone) VALUES
-('Alice Wang', 'alice@gmail.com', '408-111-2222'),
-('Bob Smith', 'bob@gmail.com', '408-333-4444'),
-('Carlos Rivera', 'carlos@gmail.com', '415-555-6666'),
-('Diana Lee', 'diana@gmail.com', '510-777-8888'),
-('Ethan Park', 'ethan@gmail.com', '650-999-0000'),
-('Fiona Chen', 'fiona@gmail.com', '408-121-3434'),
-('George Kim', 'george@gmail.com', '415-565-7878'),
-('Hannah Tran', 'hannah@gmail.com', '510-909-1212');
+('Alice Wang',    'alice@gmail.com',    '4081112222'),
+('Bob Smith',     'bob@sjsu.edu',       '4083334444'),
+('Carlos Rivera', 'carlos@gmail.com',   '4155556666'),
+('Diana Lee',     'diana@sjsu.edu',     '5107778888'),
+('Ethan Park',    'ethan@gmail.com',    '6509990000'),
+('Fiona Chen',    'fiona@sjsu.edu',     '4081213434'),
+('George Kim',    'george@gmail.com',   '4155657878'),
+('Hannah Tran',   'hannah@sjsu.edu',    '5109091212'),
+('Ivan Petrov',   'ivan@gmail.com',     '6502345678'),
+('Julia Roberts', 'julia@sjsu.edu',     '4083456789'),
+('Karl Urban',    'karl@gmail.com',     '4154567890'),
+('Laura Palmer',  'laura@sjsu.edu',     '5105678901'),
+('Marcus Allen',  'marcus@gmail.com',   '6506789012'),
+('Nina Simone',   'nina@sjsu.edu',      '4087890123'),
+('Oscar Wilde',   'oscar@gmail.com',    '4158901234');
 
--- tickets (event_id and attendee_id match rows above)
-INSERT INTO Tickets (event_id, attendee_id, ticket_type, price) VALUES
-(1, 1, 'General', 30.00),
-(1, 2, 'VIP', 75.00),
-(2, 3, 'General', 50.00),
-(2, 4, 'VIP', 120.00),
-(3, 5, 'General', 25.00),
-(3, 6, 'General', 25.00),
-(4, 7, 'VIP', 90.00),
-(4, 8, 'General', 40.00),
-(5, 1, 'General', 20.00),
-(5, 3, 'VIP', 60.00),
-(6, 2, 'General', 35.00),
-(6, 5, 'VIP', 80.00);
+INSERT INTO Tickets (event_id, attendee_id, ticket_type, price, purchase_date) VALUES
+(1,  1,  'General',  30.00,  '2026-05-01'),
+(1,  2,  'VIP',      75.00,  '2026-05-02'),
+(2,  3,  'General',  50.00,  '2026-05-03'),
+(2,  4,  'VIP',      120.00, '2026-05-04'),
+(3,  5,  'General',  25.00,  '2026-05-05'),
+(3,  6,  'General',  25.00,  '2026-05-06'),
+(4,  7,  'VIP',      90.00,  '2026-05-07'),
+(4,  8,  'General',  40.00,  '2026-05-08'),
+(5,  1,  'General',  20.00,  '2026-05-09'),
+(5,  3,  'VIP',      60.00,  '2026-05-10'),
+(6,  2,  'General',  35.00,  '2026-05-11'),
+(6,  5,  'VIP',      80.00,  '2026-05-12'),
+(7,  9,  'Standard', 45.00,  '2026-05-13'),
+(8,  10, 'Free',     0.00,   '2026-05-14'),
+(9,  11, 'Premium',  150.00, '2026-05-15'),
+(10, 12, 'General',  30.00,  '2026-05-16'),
+(11, 13, 'Workshop', 55.00,  '2026-05-17'),
+(12, 14, 'General',  25.00,  '2026-05-18'),
+(13, 15, 'VIP',      100.00, '2026-05-19'),
+(14, 1,  'Standard', 40.00,  '2026-05-20');
 
 INSERT INTO Users (username, password, role) VALUES
 ('admin',  'pbkdf2:sha256:260000$tyCNDSc4ZnvU1Etg$379332727678982fa7dc3c98ba70e9a4d9165789f692983dc631392dc392bd1d', 'admin'),
