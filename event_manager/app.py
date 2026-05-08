@@ -3,10 +3,13 @@ from werkzeug.security import check_password_hash
 from functools import wraps
 import database as DB
 from dao import organizer_dao, venue_dao, event_dao, attendee_dao, ticket_dao, user_dao
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 app = Flask(__name__)
 
-app.secret_key = 'cs157a-secret-key-2026'
+app.secret_key = os.getenv('SECRET_KEY')
 
 def login_required(f):
     @wraps(f)
