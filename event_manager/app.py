@@ -272,6 +272,31 @@ def no_cache(response):
     response.headers["Cache-Control"] = "no-store"
     return response
 
+@app.route('/query', methods=['GET', 'POST'])
+@admin_required
+def query_console():
+    results = None
+    columns = []
+    error   = None
+    query   = ''
+
+    if request.method == 'POST':
+        query = request.form['query'].strip()
+        try:
+            db = DB.get_db()
+            cursor = db.execute(query)
+            results = cursor.fetchall()
+            columns = [description[0] for description in cursor.description]
+            db.close()
+        except Exception as e:
+            error = str(e)
+
+    return render_template('query.html',
+                           results=results,
+                           columns=columns,
+                           error=error,
+                           query=query)
+
 if __name__ == '__main__':
     DB.init_db()
     app.run(debug=True)

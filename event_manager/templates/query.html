@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}Query Console{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>🖥️ Query Console</h2>
+    <span class="badge bg-danger">Admin Only</span>
+</div>
+
+<!-- Preset query buttons -->
+<div class="card shadow-sm mb-3">
+    <div class="card-header bg-dark text-white">
+        <h6 class="mb-0">Quick Queries</h6>
+    </div>
+    <div class="card-body">
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-sm btn-outline-primary preset-btn"
+                data-query="SELECT e.title, e.event_date, o.name AS organizer, v.name AS venue FROM Events e JOIN Organizers o ON e.organizer_id = o.organizer_id JOIN Venues v ON e.venue_id = v.venue_id ORDER BY e.event_date">
+                All Events with Organizer and Venue
+            </button>
+            <button class="btn btn-sm btn-outline-primary preset-btn"
+                data-query="SELECT a.name, a.email, e.title AS event, t.ticket_type, t.price FROM Tickets t JOIN Attendees a ON t.attendee_id = a.attendee_id JOIN Events e ON t.event_id = e.event_id ORDER BY e.title">
+                All Tickets with Attendee and Event
+            </button>
+            <button class="btn btn-sm btn-outline-primary preset-btn"
+                data-query="SELECT e.title, COUNT(t.ticket_id) AS tickets_sold FROM Events e LEFT JOIN Tickets t ON e.event_id = t.event_id GROUP BY e.event_id ORDER BY tickets_sold DESC">
+                Ticket Count per Event
+            </button>
+            <button class="btn btn-sm btn-outline-primary preset-btn"
+                data-query="SELECT a.name, a.email, COUNT(t.ticket_id) AS total_tickets FROM Attendees a LEFT JOIN Tickets t ON a.attendee_id = t.attendee_id GROUP BY a.attendee_id ORDER BY total_tickets DESC">
+                Attendees by Ticket Count
+            </button>
+            <button class="btn btn-sm btn-outline-primary preset-btn"
+                data-query="SELECT * FROM Events WHERE event_date >= DATE('now') ORDER BY event_date">
+                Upcoming Events
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Query input -->
+<div class="card shadow-sm mb-3">
+    <div class="card-header bg-dark text-white">
+        <h6 class="mb-0">Write Your Query</h6>
+    </div>
+    <div class="card-body">
+        <form method="post" action="/query">
+            <div class="mb-3">
+                <textarea name="query" id="queryInput" class="form-control font-monospace"
+                          rows="4"
+                          placeholder="SELECT * FROM Events ...">{{ query }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">▶ Run Query</button>
+            <button type="button" class="btn btn-secondary ms-2"
+                    onclick="document.getElementById('queryInput').value = ''">Clear</button>
+        </form>
+    </div>
+</div>
+
+<!-- Error -->
+{% if error %}
+<div class="alert alert-danger">
+    <strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+
+<!-- Results -->
+{% if results is not none %}
+<div class="card shadow-sm">
+    <div class="card-header bg-dark text-white d-flex justify-content-between">
+        <h6 class="mb-0">Results</h6>
+        <span class="badge bg-secondary">{{ results|length }} rows</span>
+    </div>
+    <div class="card-body p-0">
+        {% if results|length == 0 %}
+            <p class="text-muted p-3 mb-0">Query returned no results.</p>
+        {% else %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        {% for col in columns %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in results %}
+                    <tr>
+                        {% for col in columns %}
+                        <td>{{ row[col] }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<script>
+document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById('queryInput').value = btn.getAttribute('data-query');
+    });
+});
+</script>
+
+{% endblock %}

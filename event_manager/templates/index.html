@@ -64,5 +64,19 @@
         </div>
     </div>
 
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 text-center p-3">
+            <div class="fs-1 mt-2">🖥️</div>
+            <div class="card-body">
+                <h5 class="card-title">Query Console</h5>
+                <p class="card-text text-muted">Run custom SQL queries</p>
+                {% if session['role'] == 'admin' %}
+                <a href="/query" class="btn btn-danger">Open Console</a>
+                {% else %}
+                <span class="text-muted small">Admin only</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
