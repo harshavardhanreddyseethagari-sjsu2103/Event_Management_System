@@ -45,3 +45,7 @@ INSERT INTO Tickets (event_id, attendee_id, ticket_type, price) VALUES
 (5, 3, 'VIP', 60.00),
 (6, 2, 'General', 35.00),
 (6, 5, 'VIP', 80.00);
+
+INSERT INTO Users (username, password, role) VALUES
+('admin',  'pbkdf2:sha256:260000$tyCNDSc4ZnvU1Etg$379332727678982fa7dc3c98ba70e9a4d9165789f692983dc631392dc392bd1d', 'admin'),
+('viewer', 'pbkdf2:sha256:260000$cLsAXNyaXhTRhIgj$ab6059fb8866be72ebdd9422756e4fe6b8cfb64a59b913c10a1a488a6fc6ef7d', 'viewer');

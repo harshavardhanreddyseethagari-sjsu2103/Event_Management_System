@@ -44,3 +44,10 @@ CREATE TABLE IF NOT EXISTS Tickets (
     FOREIGN KEY (event_id)    REFERENCES Events(event_id) ON DELETE CASCADE,
     FOREIGN KEY (attendee_id) REFERENCES Attendees(attendee_id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS Users (
+    user_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    role     TEXT NOT NULL
+);

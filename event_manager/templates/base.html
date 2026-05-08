@@ -15,7 +15,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/events">Events</a>
                 </li>
@@ -30,6 +30,19 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/venues">Venues</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <span class="nav-link text-light">
+                        {% if session['role'] == 'admin' %}👑{% else %}👁️{% endif %}
+                        {{ session['username'] }}
+                        <span class="badge bg-secondary ms-1">{{ session['role'] }}</span>
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/logout">Logout</a>
                 </li>
             </ul>
         </div>

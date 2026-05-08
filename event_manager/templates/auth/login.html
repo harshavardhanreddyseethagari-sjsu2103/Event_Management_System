@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login — Event Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">🎟️ Event Manager</h2>
+                <p class="text-muted">Sign in to continue</p>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Login</h5>
+                </div>
+                <div class="card-body">
+
+                    {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                    {% endif %}
+
+                    <form action="/login" method="post">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Username</label>
+                            <input type="text" name="username" class="form-control"
+                                   placeholder="Enter username" required autofocus>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Password</label>
+                            <input type="password" name="password" class="form-control"
+                                   placeholder="Enter password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-body">
+                    <p class="mb-1 fw-semibold">Demo Accounts:</p>
+                    <small class="text-muted">
+                        👑 Admin: <code>admin</code> / <code>admin123</code> — full access<br>
+                        👁️ Viewer: <code>viewer</code> / <code>viewer123</code> — view only
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

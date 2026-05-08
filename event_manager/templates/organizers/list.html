@@ -4,7 +4,9 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>🏢 Organizers</h2>
+    {% if session['role'] == 'admin' %}
     <a href="/organizers/add" class="btn btn-success">+ Add New Organizer</a>
+    {% endif %}
 </div>
 
 <div class="card shadow-sm">
@@ -29,13 +31,17 @@
                     <td>{{ o['email'] }}</td>
                     <td>{{ o['phone'] }}</td>
                     <td>
+                        {% if session['role'] == 'admin' %}
                         <a href="/organizers/edit/{{ o['organizer_id'] }}"
-                           class="btn btn-sm btn-warning">Edit</a>
+                        class="btn btn-sm btn-warning">Edit</a>
                         <form action="/organizers/delete/{{ o['organizer_id'] }}"
-                              method="post" style="display:inline">
+                            method="post" style="display:inline">
                             <button type="submit" class="btn btn-sm btn-danger"
                                     onclick="return confirm('Delete this organizer?')">Delete</button>
                         </form>
+                        {% else %}
+                        <span class="text-muted small">View only</span>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

@@ -4,7 +4,9 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>🎫 Tickets</h2>
+    {% if session['role'] == 'admin' %}
     <a href="/tickets/add" class="btn btn-success">+ Add New Ticket</a>
+    {% endif %}
 </div>
 
 <div class="card shadow-sm">
@@ -29,6 +31,7 @@
                     <td>{{ t['ticket_type'] }}</td>
                     <td>${{ "%.2f"|format(t['price']) }}</td>
                     <td>
+                        {% if session['role'] == 'admin' %}
                         <a href="/tickets/edit/{{ t['ticket_id'] }}"
                            class="btn btn-sm btn-warning">Edit</a>
                         <form action="/tickets/delete/{{ t['ticket_id'] }}"
@@ -36,6 +39,9 @@
                             <button type="submit" class="btn btn-sm btn-danger"
                                     onclick="return confirm('Cancel this ticket?')">Delete</button>
                         </form>
+                        {% else %}
+                        <span class="text-muted small">View only</span>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Access Denied{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5 text-center">
+        <div class="card shadow-sm">
+            <div class="card-body p-5">
+                <div class="fs-1 mb-3">🚫</div>
+                <h3 class="fw-bold">Access Denied</h3>
+                <p class="text-muted">
+                    You need <strong>admin</strong> access to perform this action.<br>
+                    Your current role is <strong>{{ session['role'] }}</strong>.
+                </p>
+                <a href="/" class="btn btn-primary mt-2">Go Back Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
