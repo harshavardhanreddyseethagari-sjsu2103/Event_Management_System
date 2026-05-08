@@ -2,7 +2,7 @@ import database as DB
 
 def get_all_attendees():
     db = DB.get_db()
-    attendees = db.execute("SELECT * FROM Attendees ORDER BY name").fetchall()
+    attendees = db.execute("SELECT * FROM Attendees ORDER BY attendee_id").fetchall()
     db.close()
     return attendees
 

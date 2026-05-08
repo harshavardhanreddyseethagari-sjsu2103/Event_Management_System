@@ -2,7 +2,7 @@ import database as DB
 
 def get_all_venues():
     db = DB.get_db()
-    venues = db.execute("SELECT * FROM Venues ORDER BY name").fetchall()
+    venues = db.execute("SELECT * FROM Venues ORDER BY venue_id").fetchall()
     db.close()
     return venues
 

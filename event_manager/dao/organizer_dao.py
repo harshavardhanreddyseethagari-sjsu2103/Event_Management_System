@@ -2,7 +2,7 @@ import database as DB
 
 def get_all_organizers():
     db = DB.get_db()
-    rows = db.execute("SELECT * FROM Organizers ORDER BY name").fetchall()
+    rows = db.execute("SELECT * FROM Organizers ORDER BY organizer_id").fetchall()
     db.close()
     return rows
 
