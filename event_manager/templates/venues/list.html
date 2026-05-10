@@ -36,7 +36,7 @@
                         {% if session['role'] == 'admin' %}
                         <a href="/venues/edit/{{ v['venue_id'] }}"
                         class="btn btn-sm btn-warning">Edit</a>
-                        <form action="/venues/delete/{{ o['organizer_id'] }}"
+                        <form action="/venues/delete/{{ v['venue_id'] }}"
                             method="post" style="display:inline">
                             <button type="submit" class="btn btn-sm btn-danger"
                                     onclick="return confirm('Delete this venue?')">Delete</button>
