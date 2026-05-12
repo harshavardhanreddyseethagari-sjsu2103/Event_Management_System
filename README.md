@@ -131,7 +131,7 @@ Every table supports all four SQL operations through the web UI.
 
 ---
 
-## Current Progress
+## Project Progress Check
 
 - [x] Project proposal
 - [x] Schema design (6 tables, BCNF)
