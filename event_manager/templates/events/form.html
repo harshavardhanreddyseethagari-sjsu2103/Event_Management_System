@@ -50,7 +50,7 @@
                         <select name="venue_id" class="form-select" required>
                             <option value="">-- Select Venue --</option>
                             {% for v in venues %}
-                            <option value="{{ v['venue_id'] }}"
+                            <option value="{{ o['venue_id'] }}"
                                 {{ 'selected' if event and event['venue_id'] == v['venue_id'] }}>
                                 {{ v['name'] }} — {{ v['city'] }}
                             </option>
