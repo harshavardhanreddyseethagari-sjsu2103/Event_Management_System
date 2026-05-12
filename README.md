@@ -149,10 +149,10 @@ Every table supports all four SQL operations through the web UI.
 
 ## Team
 
-| Name | Student ID |
-|------|-----------|
-| Victor Tung | 017221828 |
-| Harshavardhan Seethagari | 019140537 |
+| Name |
+|------|
+| Victor Tung |
+| Harshavardhan Seethagari |
 
 ---
 
