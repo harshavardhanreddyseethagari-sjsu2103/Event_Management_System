@@ -1,5 +1,13 @@
+"""
+attendee_dao.py
+Data Access Object for the Attendees table.
+Contains all SQL operations: SELECT, INSERT, UPDATE, DELETE.
+All queries use parameterized statements (?) to prevent SQL injection.
+"""
+
 import database as DB
 
+# SELECT all attendees ordered by ID
 def get_all_attendees():
     db = None
     try:
@@ -8,6 +16,7 @@ def get_all_attendees():
     finally:
         if db: db.close()
 
+# SELECT a single attendee by primary key — used to pre-fill the edit form
 def get_attendee_by_id(attendee_id):
     db = None
     try:
@@ -16,6 +25,7 @@ def get_attendee_by_id(attendee_id):
     finally:
         if db: db.close()
 
+# INSERT a new attendee row into the Attendees table
 def add_attendee(name, email, phone):
     db = None
     try:
@@ -29,6 +39,7 @@ def add_attendee(name, email, phone):
     finally:
         if db: db.close()
 
+# UPDATE an existing attendee row identified by attendee_id
 def update_attendee(attendee_id, name, email, phone):
     db = None
     try:
@@ -42,6 +53,7 @@ def update_attendee(attendee_id, name, email, phone):
     finally:
         if db: db.close()
 
+# DELETE an attendee — ON DELETE CASCADE removes their linked Tickets automatically
 def delete_attendee(attendee_id):
     db = None
     try:

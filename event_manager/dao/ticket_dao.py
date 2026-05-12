@@ -1,3 +1,11 @@
+"""
+ticket_dao.py
+Data Access Object for the Tickets table.
+Tickets is a junction table linking Events and Attendees (many-to-many).
+The get_all_tickets query JOINs Events and Attendees to show
+readable titles and names instead of raw IDs.
+"""
+
 import database as DB
 
 def get_all_tickets():

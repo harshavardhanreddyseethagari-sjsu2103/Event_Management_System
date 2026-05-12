@@ -11,6 +11,10 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv('SECRET_KEY')
 
+# ── Auth decorators ──────────────────────────────────────────
+# login_required: redirects unauthenticated users to /login
+# admin_required: blocks non-admin users with a 403 page
+
 def login_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -29,6 +33,9 @@ def admin_required(f):
         return f(*args, **kwargs)
     return decorated
 
+# ── Login / Logout ───────────────────────────────────────────
+# GET  /login → show login form
+# POST /login → verify credentials against Users table, store session
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
@@ -45,6 +52,8 @@ def login():
             return render_template('auth/login.html', error="Invalid username or password")
     return render_template('auth/login.html', error=None)
 
+
+# Clear session and redirect to login page
 @app.route('/logout')
 def logout():
     session.clear()
@@ -270,6 +279,7 @@ def delete_ticket(ticket_id):
     ticket_dao.delete_ticket(ticket_id)
     return redirect(url_for('list_tickets'))
 
+# Prevent browser from caching pages so data is always fresh
 @app.after_request
 def no_cache(response):
     response.headers["Cache-Control"] = "no-store"
