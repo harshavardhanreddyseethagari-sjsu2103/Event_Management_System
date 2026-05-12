@@ -111,8 +111,8 @@ Every table supports all four SQL operations through the web UI.
 - [x] ticket_dao.py
 - [x] Flask routes (app.py)
 - [x] HTML templates
-- [ ] Final report
-- [ ] Presentation
+- [x] Final report
+- [x] Presentation
 
 ---
 
