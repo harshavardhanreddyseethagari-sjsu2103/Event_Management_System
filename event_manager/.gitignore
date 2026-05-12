@@ -2,3 +2,4 @@ events.db
 test_app.py
 test_selenium.py
 .env
+generate_passwords.py
